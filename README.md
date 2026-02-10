@@ -9,7 +9,7 @@ https://www.kaggle.com/code/erenakbulut/mental-disorder-reddit-ds-polars-vs-pand
 ## Overview & Motivation
 This project applies the full data-project lifecycle to a large-scale (~700k rows) Reddit posts dataset drawn from mental-health–related subreddits. The dataset includes post titles, post text, timestamps, NSFW flags, and subreddit metadata.
 
-The goal is **not** to diagnose mental health conditions, but to explore how *language patterns differ across mental-health–related communities* and how subreddit labels can function as weak, community-level signals for text analysis.
+The goal is not to diagnose mental health conditions, but to explore how language patterns differ across mental-health–related communities and how subreddit labels can function as weak, community-level signals for text analysis.
 
 The project emphasizes:
 - Robust data modeling and ingestion
