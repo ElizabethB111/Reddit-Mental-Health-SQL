@@ -1,50 +1,72 @@
+# Detecting Mental-Health–Related Subreddit Signals from Reddit Post Text
 
-# Detecting mental-health–related subreddit signals from Reddit post text (Reddit mental-disorder dataset)
+## Data Source
+Kaggle dataset: *Mental Disorder Reddit Posts*  
+https://www.kaggle.com/code/erenakbulut/mental-disorder-reddit-ds-polars-vs-pandas/input
 
-## Data source(s)
-Kaggle dataset (mental disorder Reddit posts) — https://www.kaggle.com/code/erenakbulut/mental-disorder-reddit-ds-polars-vs-pandas/input
+---
 
 ## Overview & Motivation
-This project applies the data-project lifecycle to a large (~700k rows) Reddit posts dataset focused on mental-health–related subreddits. The dataset includes post titles, text, timestamps, NSFW flags, and subreddit names.
+This project applies the full data-project lifecycle to a large-scale (~700k rows) Reddit posts dataset drawn from mental-health–related subreddits. The dataset includes post titles, post text, timestamps, NSFW flags, and subreddit metadata.
 
-The project will design a normalized relational schema, ingest and clean the raw data using Python, explore using SQL, perform statistical and text-based analysis with Python, and apply a small classification model using subreddit labels. Ethical considerations will be significant because the content is sensitive (mental health, personal disclosures, misuse or misclassification).
+The goal is **not** to diagnose mental health conditions, but to explore how *language patterns differ across mental-health–related communities* and how subreddit labels can function as weak, community-level signals for text analysis.
 
-## ER Diagram
-```
-        +--------------------+
-        |    subreddits      |
-        |--------------------|
-        | subreddit_id  PK   |
-        | name (unique)      |
-        | description         |
-        | created_at          |
-        +----------^---------+
-                   |
-                   | 1-to-many
-                   |
-        +----------+-----------+
-        |        posts         |
-        |----------------------|
-        | post_id        PK    |
-        | title               |
-        | selftext            |
-        | created_utc (ts)    |
-        | over_18 (bool)      |
-        | subreddit_id   FK ---> subreddits.subreddit_id
-        | text_length         |
-        | cleaned_text        |
-        | source_file         |
-        +----------^-----------+
-                   |
-                   | many-to-1 (ETL logs)
-                   |
-        +----------+-----------+
-        |    ingestion_logs    |
-        |----------------------|
-        | log_id        PK     |
-        | source_file          |
-        | ingest_time          |
-        | num_rows             |
-        | notes                |
-        +----------------------+
+The project emphasizes:
+- Robust data modeling and ingestion
+- SQL-based exploration over normalized data
+- Text preprocessing and statistical analysis in Python
+- A small, interpretable text classification model
+- Ethical considerations when working with sensitive, user-generated mental health content
+
+---
+
+## Project Scope
+This repository demonstrates skills in:
+- Relational database design and normalization
+- ETL pipelines and data quality logging
+- SQL analytics on text-heavy datasets
+- NLP preprocessing and feature engineering
+- Ethical evaluation of modeling choices and limitations
+
+---
+
+## Entity–Relationship (ER) Diagram
+
+    +--------------------+
+    |     subreddits     |
+    |--------------------|
+    | subreddit_id  PK   |
+    | name (unique)      |
+    | description        |
+    | created_at         |
+    +----------^---------+
+               |
+               | 1-to-many
+               |
+    +----------+-----------+
+    |        posts         |
+    |----------------------|
+    | post_id        PK    |
+    | title               |
+    | selftext            |
+    | created_utc (ts)    |
+    | over_18 (bool)      |
+    | subreddit_id   FK   |
+    | text_length         |
+    | cleaned_text        |
+    | source_file         |
+    +----------^-----------+
+               |
+               | many-to-1
+               |
+    +----------+-----------+
+    |   ingestion_logs    |
+    |----------------------|
+    | log_id        PK     |
+    | source_file          |
+    | ingest_time          |
+    | num_rows             |
+    | notes                |
+    +----------------------+
+
 ```
