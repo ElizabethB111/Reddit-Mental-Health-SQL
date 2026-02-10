@@ -1,13 +1,16 @@
-Project title: Detecting mental-health–related subreddit signals from Reddit post text (Reddit mental-disorder dataset)
 
-Data source(s): Kaggle dataset (mental disorder Reddit posts) — https://www.kaggle.com/code/erenakbulut/mental-disorder-reddit-ds-polars-vs-pandas/input
+# Detecting mental-health–related subreddit signals from Reddit post text (Reddit mental-disorder dataset)
 
-Overview & Motivation
+## Data source(s)
+Kaggle dataset (mental disorder Reddit posts) — https://www.kaggle.com/code/erenakbulut/mental-disorder-reddit-ds-polars-vs-pandas/input
 
+## Overview & Motivation
 This project applies the data-project lifecycle to a large (~700k rows) Reddit posts dataset focused on mental-health–related subreddits. The dataset includes post titles, text, timestamps, NSFW flags, and subreddit names.
 
 The project will design a normalized relational schema, ingest and clean the raw data using Python, explore using SQL, perform statistical and text-based analysis with Python, and apply a small classification model using subreddit labels. Ethical considerations will be significant because the content is sensitive (mental health, personal disclosures, misuse or misclassification).
-ER Diagram
+
+## ER Diagram
+```
         +--------------------+
         |    subreddits      |
         |--------------------|
@@ -43,3 +46,5 @@ ER Diagram
         | ingest_time          |
         | num_rows             |
         | notes                |
+        +----------------------+
+```
